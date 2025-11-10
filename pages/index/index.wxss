@@ -1,0 +1,108 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  background: #f7f8fa;
+  min-height: 100vh;
+}
+
+.message-list {
+  flex: 1;
+  padding: 20rpx 20rpx 120rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 30rpx;
+}
+
+.message.user {
+  flex-direction: row-reverse;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: #1989fa;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  margin: 0 20rpx;
+}
+
+.message.assistant .avatar {
+  background: #07c160;
+}
+
+.bubble {
+  max-width: 60%;
+  padding: 20rpx;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  line-height: 1.4;
+}
+
+.message.user .bubble {
+  background: #1989fa;
+  color: white;
+}
+
+.message.assistant .bubble {
+  background: white;
+  color: #323233;
+}
+
+.input-area {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  padding: 24rpx;
+  background: white;
+  align-items: center;
+  border-top: 1rpx solid #f0f0f0;
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.08);
+  z-index: 100;
+}
+
+.input-field {
+  flex: 1;
+  margin-right: 16rpx;
+  border-radius: 24rpx;
+  background: #f7f8fa;
+  border: none;
+}
+
+.send-btn {
+  width: 80rpx !important;
+  margin-right: 20px;
+}
+
+.send-btn button{
+  width: 80rpx !important;
+}
+
+/* 流式响应打字机效果 */
+.message.assistant .bubble.streaming {
+  position: relative;
+}
+
+.message.assistant .bubble.streaming::after {
+  content: '|';
+  animation: blink 1s infinite;
+  color: #07c160;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}

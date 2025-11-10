@@ -1,0 +1,32 @@
+<view class="chat-container">
+  <scroll-view class="message-list" scroll-y scroll-into-view="msg-{{messages.length}}">
+    <view wx:for="{{messages}}" wx:key="index" class="message {{item.role}}" id="msg-{{index}}">
+      <view class="avatar">{{item.role === 'user' ? '我' : 'AI'}}</view>
+      <rich-text class="bubble {{item.role === 'assistant' && loading && index === messages.length - 1 ? 'streaming' : ''}}" nodes="{{item.content}}" />
+    </view>
+  </scroll-view>
+
+  <view class="input-area">
+    <van-field
+      value="{{inputValue}}"
+      placeholder="输入消息..."
+      bind:change="onInputChange"
+      bind:confirm="sendMessage"
+      confirm-type="send"
+      class="input-field"
+    />
+    <van-button
+      round 
+      type="info"
+      size="small"
+      loading="{{loading}}"
+      disabled="{{loading}}"
+      bind:click="sendMessage"
+      class="send-btn"
+      icon="guide-o"
+    >
+    </van-button>
+  </view>
+  
+  <van-toast id="van-toast" />
+</view>
